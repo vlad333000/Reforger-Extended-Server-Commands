@@ -1,0 +1,8 @@
+GameProject {
+ ID "ExtendedServerCommands"
+ GUID "5EFD3ECFB7648998"
+ TITLE "ExtendedServerCommands"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
