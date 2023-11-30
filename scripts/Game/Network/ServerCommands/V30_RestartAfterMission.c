@@ -20,19 +20,19 @@ class V30_RestartAfterMissionScheduler {
 			return;
 		};
 		m_bScheduled = true;
-		SCR_BaseGameMode.Cast(GetGame().GetGameMode()).GetOnGameEnd().Insert(OnGameEnd);
+		SCR_BaseGameMode.Cast(GetGame().GetGameMode()).GetOnGameModeEnd().Insert(OnGameModeEnd);
 	};
 	
 	void Unschedule() {
 		m_bScheduled = false;
-		SCR_BaseGameMode.Cast(GetGame().GetGameMode()).GetOnGameEnd().Remove(OnGameEnd);
+		SCR_BaseGameMode.Cast(GetGame().GetGameMode()).GetOnGameModeEnd().Remove(OnGameModeEnd);
 	};
 	
 	bool IsScheduled() {
 		return m_bScheduled;
 	};
 	
-	protected void OnGameEnd() {
+	protected void OnGameModeEnd(SCR_GameModeEndData endData) {
 		GetGame().GetBackendApi().GetDSSession().RequestRestart();
 	};
 };
